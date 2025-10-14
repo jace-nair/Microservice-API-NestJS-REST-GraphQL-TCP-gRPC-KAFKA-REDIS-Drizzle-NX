@@ -2,5 +2,36 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./apps/rest-api-e2e"
+    },
+    {
+      "path": "./apps/rest-api"
+    },
+    {
+      "path": "./apps/notification-service-e2e"
+    },
+    {
+      "path": "./apps/notification-service"
+    },
+    {
+      "path": "./apps/async-score-service-e2e"
+    },
+    {
+      "path": "./apps/async-score-service"
+    },
+    {
+      "path": "./apps/sync-score-service-e2e"
+    },
+    {
+      "path": "./apps/sync-score-service"
+    },
+    {
+      "path": "./apps/graphql-api-e2e"
+    },
+    {
+      "path": "./apps/graphql-api"
+    }
+  ]
 }
