@@ -5,6 +5,8 @@ import { DrizzleModule } from './drizzle/drizzle.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { MICROSERVICES_CLIENTS } from '../constants';
 import { UsersModule } from './users/users.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -39,6 +41,12 @@ import { UsersModule } from './users/users.module';
       },
     ]),
     UsersModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: true,
+      debug: true,
+      playground: true,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
