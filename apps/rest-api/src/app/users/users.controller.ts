@@ -64,31 +64,44 @@ export class UsersController {
     return this.usersService.getUserById(id);
   }
 
-  // POST /users OR Create a user
+  // POST /users OR Create a user locally
   @Post()
   async createAUser(
     @Body(new ValidationPipe({ whitelist: true }))
     createUserDto: CreateUserDto
   ) {
-    return this.usersService.createUser(createUserDto);
+    const newUser = this.usersService.createUser(createUserDto);
+    return newUser;
   }
 
   //############ POST create a user on sync-score-service using TCP channel #############
   @Post('sync-score')
   async createAUserSyncScore(@Body() createUserDto: CreateUserDto) {
-    return this.syncScoreServiceClient.send('create-user', createUserDto);
+    const newUser = this.syncScoreServiceClient.send(
+      'create-user',
+      createUserDto
+    );
+    return newUser;
   }
 
   //############ POST create a user on async-score-service using KAFKA channel #############
   @Post('async-score')
   async createAUserAsyncScore(@Body() createUserDto: CreateUserDto) {
-    return this.asyncScoreServiceClient.emit('create-user', createUserDto);
+    const newUser = this.asyncScoreServiceClient.emit(
+      'create-user',
+      createUserDto
+    );
+    return newUser;
   }
 
   //############ POST create a user on notification-service using REDIS channel #############
   @Post('notification')
   async createAUserNotification(@Body() createUserDto: CreateUserDto) {
-    return this.notificationServiceClient.emit('create-user', createUserDto);
+    const newUser = this.notificationServiceClient.emit(
+      'create-user',
+      createUserDto
+    );
+    return newUser;
   }
 
   // PATCH /users/:id

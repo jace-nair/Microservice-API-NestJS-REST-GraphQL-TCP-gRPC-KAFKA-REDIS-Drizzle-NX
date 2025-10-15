@@ -5,7 +5,13 @@ import { CreateUserDto } from './dto';
 export class UsersService {
   async createAUserAsyncScore(createUserDto: CreateUserDto) {
     console.log(
-      `User created by ASyncScore Service using KAFKA: The user name is: ${createUserDto.name}`
+      `User created by ASyncScore Service using REST and KAFKA: The user name is: ${createUserDto.name}`
+    );
+  }
+
+  async createAUserAsyncScoreG(createUserDto: CreateUserDto) {
+    console.log(
+      `User created by ASyncScore Service using GraphQL and KAFKA: The user name is: ${createUserDto.name}`
     );
   }
 }

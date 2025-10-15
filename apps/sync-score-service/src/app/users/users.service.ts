@@ -4,6 +4,20 @@ import { CreateUserDto } from './dto';
 @Injectable()
 export class UsersService {
   async createAUser(createUserDto: CreateUserDto) {
-    return `User created using TCP channel in SyncScore Service. The user name is: ${createUserDto.name}`;
+    return {
+      name: createUserDto.name,
+      email: createUserDto.email,
+      password: createUserDto.password,
+      role: createUserDto.role,
+    };
+  }
+
+  async createAUserG(createUserDto: CreateUserDto) {
+    return {
+      name: createUserDto.name,
+      email: createUserDto.email,
+      password: createUserDto.password,
+      role: createUserDto.role,
+    };
   }
 }

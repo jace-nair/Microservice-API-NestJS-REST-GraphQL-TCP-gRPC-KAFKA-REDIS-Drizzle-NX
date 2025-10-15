@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto';
 @Injectable()
 export class UsersService {
   async getUsers() {
@@ -18,13 +19,25 @@ export class UsersService {
     ];
   }
 
-  async getUser(id: string) {
+  async getUser(userId: string) {
     return [
       {
+        id: userId,
         name: 'test1',
         email: 'test1@email.com',
         password: 'test1password',
         role: 'admin',
+      },
+    ];
+  }
+
+  async createAUser(createUserDto: CreateUserDto) {
+    return [
+      {
+        name: createUserDto.name,
+        email: createUserDto.email,
+        password: createUserDto.name,
+        role: createUserDto.role,
       },
     ];
   }

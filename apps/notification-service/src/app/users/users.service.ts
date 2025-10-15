@@ -5,7 +5,12 @@ import { CreateUserDto } from './dto';
 export class UsersService {
   async createAUserNotification(createUserDto: CreateUserDto) {
     console.log(
-      `User created by Notification Service using REDIS: The user name is: ${createUserDto.name}`
+      `User created by Notification Service using REST and REDIS: The user name is: ${createUserDto.name}`
+    );
+  }
+  async createAUserNotificationG(createUserDto: CreateUserDto) {
+    console.log(
+      `User created by Notification Service using GraphQL and REDIS: The user name is: ${createUserDto.name}`
     );
   }
 }

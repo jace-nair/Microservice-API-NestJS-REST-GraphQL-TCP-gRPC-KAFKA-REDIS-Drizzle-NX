@@ -9,6 +9,13 @@ export class UsersController {
 
   @MessagePattern('create-user')
   async createAUser(@Body() createUserDto: CreateUserDto) {
-    return await this.userService.createAUser(createUserDto);
+    const newUser = await this.userService.createAUser(createUserDto);
+    return newUser;
+  }
+
+  @MessagePattern('create-user-graphql')
+  async createAUserG(@Body() createUserDto: CreateUserDto) {
+    const newUser = await this.userService.createAUserG(createUserDto);
+    return newUser;
   }
 }
