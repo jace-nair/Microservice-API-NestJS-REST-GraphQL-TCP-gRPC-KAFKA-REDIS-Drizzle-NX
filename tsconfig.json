@@ -32,6 +32,12 @@
     },
     {
       "path": "./apps/graphql-api"
+    },
+    {
+      "path": "./apps/gsync-score-service-e2e"
+    },
+    {
+      "path": "./apps/gsync-score-service"
     }
   ]
 }

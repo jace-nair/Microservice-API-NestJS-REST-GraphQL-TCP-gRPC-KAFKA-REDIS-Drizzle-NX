@@ -4,6 +4,8 @@ import { UsersService } from './users.service';
 import { DrizzleModule } from './../drizzle/drizzle.module';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { MICROSERVICES_CLIENTS } from '../../constants';
+import { USERS_PACKAGE_NAME } from '../../types/proto/users';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -15,6 +17,15 @@ import { MICROSERVICES_CLIENTS } from '../../constants';
         transport: Transport.TCP,
         options: {
           port: 3004,
+        },
+      },
+      {
+        // Register client on api-gateway for gRPC channel.
+        name: MICROSERVICES_CLIENTS.GSYNC_SCORE_SERVICE_CLIENT,
+        transport: Transport.GRPC,
+        options: {
+          package: USERS_PACKAGE_NAME,
+          protoPath: join(__dirname, 'proto/users.proto'),
         },
       },
       // Register client on api-gateway for KAFKA channel.
